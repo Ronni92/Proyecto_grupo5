@@ -5,7 +5,7 @@ app = FastAPI(
     title="Schedule AI API",
     description="API for automated student scheduling using AI",
     version="1.0",
-    docs_url="/docs",  # 🔴 Asegura que esta línea está presente
+    docs_url="/docs",  
     redoc_url="/redoc"
 )
 

@@ -1,6 +1,7 @@
 from fastapi import APIRouter
 
 router = APIRouter()
-@router.get("/")
-def get_recommendations():
-    return {"message": "AI-based recommendations will be here"}
+
+@router.get("/recommendations", summary="Obtener recomendaciones", description="Este endpoint devuelve recomendaciones personalizadas para los estudiantes.")
+async def get_recommendations():
+    return {"message": "Aquí van las recomendaciones"}
