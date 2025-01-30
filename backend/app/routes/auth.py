@@ -43,27 +43,22 @@ def create_access_token(data: dict, expires_delta: timedelta = None):
 
 # ✅ **Nuevo Endpoint: Registro de Usuario**
 @router.post("/register", response_model=UserResponse)
-def register_user(user_data: UserCreate, db: Session = Depends(get_db)):
-    # 🔍 Verificar si el usuario ya existe
+def register(user_data: UserCreate, db: Session = Depends(get_db)):
+    # Revisar si el correo ya existe
     existing_user = db.query(User).filter(User.email == user_data.email).first()
     if existing_user:
         raise HTTPException(status_code=400, detail="El correo ya está registrado.")
-
-    # 🔑 Hashear la contraseña antes de guardarla
+    
+    # Encriptar la contraseña
     hashed_password = pwd_context.hash(user_data.password)
-    
-    # 📌 Crear el usuario nuevo
-    new_user = User(
-        name=user_data.name,
-        email=user_data.email,
-        hashed_password=hashed_password
-    )
-    
+    new_user = User(name=user_data.name, email=user_data.email, hashed_password=hashed_password)
+
     db.add(new_user)
     db.commit()
     db.refresh(new_user)
 
     return new_user
+
 
 # ✅ **Endpoint de Login (Ya estaba, no lo borré)**
 @router.post("/login")

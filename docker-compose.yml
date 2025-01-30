@@ -28,5 +28,17 @@ services:
     volumes:
       - pgdata:/var/lib/postgresql/data
 
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: frontend_app
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    environment:
+      - REACT_APP_API_URL=http://localhost:8000
+
 volumes:
   pgdata:
