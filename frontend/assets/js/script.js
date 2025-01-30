@@ -1,15 +1,46 @@
-//Ejecutando funciones
+// Ejecutando funciones
 document.getElementById("btn__iniciar-sesion").addEventListener("click", iniciarSesion);
 document.getElementById("btn__registrarse").addEventListener("click", register);
 window.addEventListener("resize", anchoPage);
 document.getElementById("toggle-theme").addEventListener("click", toggleTheme);
 
-//Declarando variables
+// Declarando variables
 var formulario_login = document.querySelector(".formulario__login");
 var formulario_register = document.querySelector(".formulario__register");
 var contenedor_login_register = document.querySelector(".contenedor__login-register");
 var caja_trasera_login = document.querySelector(".caja__trasera-login");
 var caja_trasera_register = document.querySelector(".caja__trasera-register");
+
+// Registrar usuario (Asegurarse de que el DOM está cargado)
+document.addEventListener("DOMContentLoaded", () => {
+    document.querySelector(".formulario__register button").addEventListener("click", async (e) => {
+        e.preventDefault();
+        
+        const userData = {
+            name: document.querySelector(".formulario__register input[placeholder='Nombre completo']").value,
+            email: document.querySelector(".formulario__register input[placeholder='Correo Electronico']").value,
+            password: document.querySelector(".formulario__register input[placeholder='Contraseña']").value
+        };
+
+        try {
+            const response = await fetch("http://localhost:8000/register", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(userData)
+            });
+            
+            if (response.ok) {
+                window.location.href = "/dashboard.html";
+            } else {
+                alert("Error en el registro");
+            }
+        } catch (error) {
+            console.error("Error:", error);
+        }
+    });
+});
 
 // FUNCIONES
 
