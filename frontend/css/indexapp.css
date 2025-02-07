@@ -1,0 +1,49 @@
+/* Cabecera */
+header {
+    width: 100%;
+    background-color: #16213e; /* Azul más oscuro para la cabecera */
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+header .logo img {
+    height: 40px; /* Tamaño más pequeño */
+    /* O puedes usar: */
+    /* width: 100px; */
+    /* height: auto; */
+}
+
+header nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+}
+
+header nav ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+header nav ul li a:hover {
+    color: #e94560; /* Color rojo al pasar el mouse */
+}
+
+header .login button {
+    background-color: #e94560; /* Color rojo para el botón de login */
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+header .login button:hover {
+    background-color: #c2334a; /* Color rojo más oscuro al pasar el mouse */
+}

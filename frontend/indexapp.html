@@ -3,18 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Optimización de Horario</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>SchedulAI</title>
+    <link rel="stylesheet" href="css/indexapp.css"> <!-- Enlaza el archivo CSS -->
 </head>
 <body>
-    <h1>Sube tu horario</h1>
-    <form id="uploadForm">
-        <input type="file" id="fileInput" accept="image/*" required>
-        <input type="text" id="requestInput" placeholder="Ejemplo: Quiero mejorar mi tiempo de estudio" required>
-        <button type="submit">Subir</button>
-    </form>
-    <div id="response"></div>
+    <!-- Cabecera -->
+    <header>
+        <div class="logo">
+            <img src="assets/images/images.jpg" alt="imagen">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#">Contacto</a></li>
+            </ul>
+        </nav>
+        <div class="login">
+            <button id="login-button">Iniciar Sesión</button>
+        </div>
+    </header>
 
-    <script src="app.js"></script>
+    <!-- Contenido Principal -->
+    <div class="container">
+        <h1>SchedulAI</h1>
+        <p class="subtitle">Ingresa tu horario</p>
+        
+        <!-- Área de subida de imágenes -->
+        <div class="upload-section">
+            <label for="image-input" class="custom-file-upload">
+                <span id="file-label">Seleccionar imagen</span>
+            </label>
+            <input type="file" id="image-input" accept="image/*">
+            <button id="analyze-button" class="hidden">Realizar análisis</button>
+        </div>
+
+        <!-- Vista previa de la imagen -->
+        <div id="image-preview" class="hidden">
+            <img id="preview-image" src="#" alt="Vista previa de la imagen">
+        </div>
+
+        <!-- Cargando -->
+        <div id="loading" class="hidden">
+            <div class="loader"></div>
+            <p>Analizando imagen...</p>
+        </div>
+
+        <!-- Resultados -->
+        <div id="result" class="hidden">
+            <h2>Descripción:</h2>
+            <p id="result-text"></p>
+        </div>
+    </div>
+
+    <script src="js/indexapp.js"></script> <!-- Enlaza el archivo JavaScript -->
 </body>
 </html>
