@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <title>SchedulAI</title>
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- Sidebar Section -->
+        <aside>
+            <div class="toggle">
+                <div class="logo">
+                    <img src="images/logo.png">
+                    <h2>Schedul<span class="danger">AI</span></h2>
+                </div>
+                <div class="close" id="close-btn">
+                    <span class="material-icons-sharp">
+                        close
+                    </span>
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <a href="index_inicio.html">
+                    <span class="material-icons-sharp">
+                        dashboard
+                    </span>
+                    <h3>Inicio</h3>
+                </a>
+                <a href="index_configuraciones.html">
+                    <span class="material-icons-sharp">
+                        settings
+                    </span>
+                    <h3>Configuración y Preferencias</h3>
+                </a>
+                <a href="index_gestion.html">
+                    <span class="material-icons-sharp">
+                        calendar_month
+                    </span>
+                    <h3>Gestión de Horarios</h3>
+                </a>
+                <a href="index_objetivo.html">
+                    <span class="material-icons-sharp">
+                        rocket
+                    </span>
+                    <h3>Objetivo</h3>
+                </a>
+                <a href="index_recoIA.html" class="active">
+                    <span class="material-icons-sharp">
+                        insights
+                    </span>
+                    <h3>Actividades</h3>
+                </a>
+                <a href="index_chat.html">
+                    <span class="material-icons-sharp">
+                        forum
+                    </span>
+                    <h3>Chat Bot</h3>
+                </a>
+                <a href="#">
+                    <span class="material-icons-sharp">
+                        logout
+                    </span>
+                    <h3>Logout</h3>
+                </a>
+            </div>
+        </aside>
+        <!-- End of Sidebar Section -->
+
+        <!-- Main Content -->
+        <main>
+            <h1>Actividades de la IA</h1>
+            <p id="fecha-hoy"></p>
+
+            <div class="dashboard-container" id="tareas-container">
+                <!-- Las tareas recomendadas se generarán aquí con JavaScript -->
+
+                <div class="ia-message">
+                    <p>Actividades académicas cargadas desde tu horario:</p>
+                  </div>
+            </div>
+        </main>
+
+        <!-- Right Section -->
+        <div class="right-section">
+            <div class="nav">
+                <button id="menu-btn">
+                    <span class="material-icons-sharp">menu</span>
+                </button>
+                <div class="dark-mode">
+                    <span class="material-icons-sharp active">light_mode</span>
+                    <span class="material-icons-sharp">dark_mode</span>
+                </div>
+                <div class="profile">
+                    <div class="info">
+                        <p>Hola, <b>Usuario</b></p>
+                        <small class="text-muted">Estudiante</small>
+                    </div>
+                    <div class="profile-photo">
+                        <img src="images/profile-1.jpg">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Consejos Personalizados -->
+            <div class="tips ia-tips">
+                <h2>Consejos de la IA 🧠</h2>
+                <div class="tip-item">
+                    <span class="material-icons-sharp">dark_mode</span>
+                    <p>Tu rendimiento mejora un 15% cuando duermes antes de las 23:00</p>
+                </div>
+                <div class="tip-item">
+                    <span class="material-icons-sharp">local_cafe</span>
+                    <p>Programa pausas de 10 min cada 50 min de estudio para mejor concentración</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/ia.js"></script>
+    <script src="assets/js/index.js"></script>
+
+</body>
+
+</html>
