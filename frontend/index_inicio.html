@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <title>SchedulAI</title>
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- Sidebar Section -->
+        <aside>
+            <div class="toggle">
+                <div class="logo">
+                    <img src="images/logo.png">
+                    <h2>Schedul<span class="danger">AI</span></h2>
+                </div>
+                <div class="close" id="close-btn">
+                    <span class="material-icons-sharp">
+                        close
+                    </span>
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <a href="index_inicio.html" class="active">
+                    <span class="material-icons-sharp">
+                        dashboard
+                    </span>
+                    <h3>Inicio</h3>
+                </a>
+                <a href="index_configuraciones.html">
+                    <span class="material-icons-sharp">
+                        settings
+                    </span>
+                    <h3>Configuración y Preferencias</h3>
+                </a>
+                <a href="index_gestion.html">
+                    <span class="material-icons-sharp">
+                        calendar_month
+                    </span>
+                    <h3>Gestión de Horarios</h3>
+                </a>
+                <a href="index_objetivo.html">
+                    <span class="material-icons-sharp">
+                        rocket
+                    </span>
+                    <h3>Objetivo</h3>
+                </a>
+                <a href="index_recoIA.html">
+                    <span class="material-icons-sharp">
+                        insights
+                    </span>
+                    <h3>Actividades</h3>
+                </a>
+                <a href="index_chat.html">
+                    <span class="material-icons-sharp">
+                        forum
+                    </span>
+                    <h3>Chat Bot</h3>
+                </a>
+                <a href="#">
+                    <span class="material-icons-sharp">
+                        logout
+                    </span>
+                    <h3>Logout</h3>
+                </a>
+            </div>
+        </aside>
+        <!-- End of Sidebar Section -->
+
+        <!-- Main Content -->
+        <main>
+            <h1>Inicio</h1>
+
+            <!-- Contenedor Principal -->
+            <div class="dashboard-container">
+                <!-- Resumen del Día -->
+                <div class="card">
+                    <h2>Resumen del Día</h2>
+                    <p>Hoy es <span id="fecha-actual"></span></p>
+                    <p>Total de Horas Planificadas: <span id="total-horas"></span> hrs</p>
+                    <p>Próxima Actividad: <span id="actividad-proxima"></span></p>
+                    <canvas id="grafico-progreso"></canvas>
+                </div>
+
+                <!-- Estado del Horario -->
+                <div class="card">
+                    <h2>Estado del Horario</h2>
+                    <p id="estado-horario">Optimizando...</p>
+                    <canvas id="grafico-estado"></canvas>
+                </div>
+
+                <!-- Próximas Actividades -->
+                <div class="card">
+                    <h2>Próximas Actividades</h2>
+                    <ul id="lista-actividades"></ul>
+                </div>
+
+                <!-- Gráfico de Uso del Tiempo -->
+                <div class="card">
+                    <h2>Distribución del Tiempo</h2>
+                    <canvas id="grafico-tiempo"></canvas>
+                </div>
+
+            </div>
+        </main>
+
+        <!-- Right Section -->
+        <div class="right-section">
+            <div class="nav">
+                <button id="menu-btn">
+                    <span class="material-icons-sharp">menu</span>
+                </button>
+                <div class="dark-mode">
+                    <span class="material-icons-sharp active">light_mode</span>
+                    <span class="material-icons-sharp">dark_mode</span>
+                </div>
+                <div class="profile">
+                    <div class="info">
+                        <p>Hola, <b>Usuario</b></p>
+                        <small class="text-muted">Estudiante</small>
+                    </div>
+                    <div class="profile-photo">
+                        <img src="images/profile-1.jpg">
+                    </div>
+                </div>
+            </div>
+
+            <div class="reminders">
+                <div class="header">
+                    <h2>Recordatorios</h2>
+                    <span class="material-icons-sharp">notifications_none</span>
+                </div>
+                <div id="lista-recordatorios"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="assets/js/index.js"></script>
+    <script src="assets/js/orders.js"></script>
+
+
+</body>
+
+</html>
