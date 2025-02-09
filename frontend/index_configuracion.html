@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <title>SchedulAI</title>
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- Sidebar Section -->
+        <aside>
+            <div class="toggle">
+                <div class="logo">
+                    <img src="images/logo.png">
+                    <h2>Schedul<span class="danger">AI</span></h2>
+                </div>
+                <div class="close" id="close-btn">
+                    <span class="material-icons-sharp">
+                        close
+                    </span>
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <a href="index_inicio.html">
+                    <span class="material-icons-sharp">
+                        dashboard
+                    </span>
+                    <h3>Inicio</h3>
+                </a>
+                <a href="index_configuraciones.html" class="active">
+                    <span class="material-icons-sharp">
+                        settings
+                    </span>
+                    <h3>Configuración y Preferencias</h3>
+                </a>
+                <a href="index_gestion.html">
+                    <span class="material-icons-sharp">
+                        calendar_month
+                    </span>
+                    <h3>Gestión de Horarios</h3>
+                </a>
+                <a href="index_objetivo.html">
+                    <span class="material-icons-sharp">
+                        rocket
+                    </span>
+                    <h3>Objetivo</h3>
+                </a>
+                <a href="index_recoIA.html">
+                    <span class="material-icons-sharp">
+                        insights
+                    </span>
+                    <h3>Actividades</h3>
+                </a>
+                <a href="index_chat.html">
+                    <span class="material-icons-sharp">
+                        forum
+                    </span>
+                    <h3>Chat Bot</h3>
+                </a>
+                <a href="#">
+                    <span class="material-icons-sharp">
+                        logout
+                    </span>
+                    <h3>Logout</h3>
+                </a>
+            </div>
+        </aside>
+        <!-- End of Sidebar Section -->
+
+        <!-- Main Content -->
+        <main>
+            <h1>Configuración y Preferencias</h1>
+
+            <div class="dashboard-container">
+
+                <!-- Información del Usuario (Ocupando toda la línea) -->
+                <div class="card user-info">
+                    <h2>Información del Usuario</h2>
+                    <img src="images/profile-1.jpg" alt="Foto de perfil" class="profile-pic" id="user-photo">
+                    <p><strong>Nombre:</strong> <span id="user-name">Usuario Ejemplo</span></p>
+                    <p><strong>Correo:</strong> <span id="user-email">usuario@example.com</span></p>
+                    <p><strong>Rol:</strong> <span id="user-role">Estudiante</span></p>
+                    <button id="change-photo">Cambiar Foto</button>
+                    <button id="change-password">Cambiar Contraseña</button>
+                </div>
+
+                <!-- Formulario de Cambio de Foto (Oculto por defecto) -->
+                <div class="card hidden" id="photo-section">
+                    <h2>Cambiar Foto de Perfil <span class="close-btn" id="close-photo">✖</span></h2>
+                    <input type="file" id="upload-photo" accept="image/*">
+                    <button id="update-photo">Actualizar Foto</button>
+                </div>
+
+                <!-- Formulario de Cambio de Contraseña (Oculto por defecto) -->
+                <div class="card hidden" id="password-section">
+                    <h2>Cambiar Contraseña <span class="close-btn" id="close-password">✖</span></h2>
+                    <input type="password" id="current-password" placeholder="Contraseña Actual" required>
+                    <input type="password" id="new-password" placeholder="Nueva Contraseña" required>
+                    <input type="password" id="confirm-password" placeholder="Confirmar Nueva Contraseña" required>
+                    <button id="update-password">Actualizar Contraseña</button>
+                </div>
+
+                <!-- Preferencias y Gráfico (Debajo de la tarjeta del usuario) -->
+                <div class="card">
+                    <h2>Preferencias de Horarios</h2>
+                    <p>Selecciona las horas en las que deseas realizar actividades recomendadas. La IA optimizará tus
+                        tiempos de descanso.</p>
+                    <label for="hora-inicio">Hora de Inicio:</label>
+                    <input type="time" id="hora-inicio">
+
+                    <label for="hora-fin">Hora de Fin:</label>
+                    <input type="time" id="hora-fin">
+
+                    <label for="pausas">Duración de Pausas Activas (min):</label>
+                    <input type="number" id="pausas" min="5" max="60">
+
+                    <button id="guardar-preferencias">Guardar Preferencias</button>
+                </div>
+
+                <div class="card">
+                    <h2>Distribución del Tiempo</h2>
+                    <canvas id="grafico-distribucion"></canvas>
+                </div>
+        </main>
+
+        <!-- Right Section -->
+        <div class="right-section">
+            <div class="nav">
+                <button id="menu-btn">
+                    <span class="material-icons-sharp">menu</span>
+                </button>
+                <div class="dark-mode">
+                    <span class="material-icons-sharp active">light_mode</span>
+                    <span class="material-icons-sharp">dark_mode</span>
+                </div>
+                <div class="profile">
+                    <div class="info">
+                        <p>Hola, <b>Usuario</b></p>
+                        <small class="text-muted">Estudiante</small>
+                    </div>
+                    <div class="profile-photo">
+                        <img src="images/profile-1.jpg">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Nueva sección de Consejos -->
+            <div class="tips">
+                <h2>Consejos de Productividad</h2>
+                <p id="daily-tip">Cargando consejo...</p>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="assets/js/users.js"></script>
+    <script src="assets/js/orders.js"></script>
+    <script src="assets/js/index.js"></script>
+</body>
+
+</html>
