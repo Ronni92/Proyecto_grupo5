@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <title>SchedulAI - Horarios</title>
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- Sidebar Section -->
+        <aside>
+            <div class="toggle">
+                <div class="logo">
+                    <img src="images/logo.png">
+                    <h2>Schedul<span class="danger">AI</span></h2>
+                </div>
+                <div class="close" id="close-btn">
+                    <span class="material-icons-sharp">
+                        close
+                    </span>
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <a href="index_inicio.html">
+                    <span class="material-icons-sharp">
+                        dashboard
+                    </span>
+                    <h3>Inicio</h3>
+                </a>
+                <a href="index_configuraciones.html">
+                    <span class="material-icons-sharp">
+                        settings
+                    </span>
+                    <h3>Configuración y Preferencias</h3>
+                </a>
+                <a href="index_gestion.html" class="active">
+                    <span class="material-icons-sharp">
+                        calendar_month
+                    </span>
+                    <h3>Gestión de Horarios</h3>
+                </a>
+                <a href="index_objetivo.html">
+                    <span class="material-icons-sharp">
+                        rocket
+                    </span>
+                    <h3>Objetivo</h3>
+                </a>
+                <a href="index_recoIA.html" class=>
+                    <span class="material-icons-sharp">
+                        insights
+                    </span>
+                    <h3>Actividades</h3>
+                </a>
+                <a href="index_chat.html">
+                    <span class="material-icons-sharp">
+                        forum
+                    </span>
+                    <h3>Chat Bot</h3>
+                </a>
+                <a href="#">
+                    <span class="material-icons-sharp">
+                        logout
+                    </span>
+                    <h3>Logout</h3>
+                </a>
+            </div>
+        </aside>
+        <!-- End of Sidebar Section -->
+
+        <!-- Main Content -->
+        <main>
+            <h1>Gestión de Horarios</h1>
+
+            <div class="calendar-container">
+                <table class="schedule">
+                    <thead>
+                        <tr>
+                            <th>Hora</th>
+                            <th>Lunes</th>
+                            <th>Martes</th>
+                            <th>Miércoles</th>
+                            <th>Jueves</th>
+                            <th>Viernes</th>
+                            <th>Sábado</th>
+                            <th>Domingo</th>
+                        </tr>
+                    </thead>
+                    <tbody id="schedule-body">
+                        <!-- Se generará dinámicamente con JS -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="schedule-options">
+                <button id="add-academic">Agregar Académica 🔵</button>
+                <button id="add-extracurricular">Agregar Extracurricular 🟡</button>
+                <button id="delete-activity">Eliminar Actividad ❌</button>
+            </div>
+
+            <!-- Subida de PDF para extraer horarios -->
+            <div class="upload-section">
+                <h2>Subir Horario en PDF</h2>
+                <input type="file" id="pdf-upload" accept="application/pdf">
+                <button id="process-pdf">Procesar PDF</button>
+            </div>
+        </main>
+
+
+        <!-- Right Section -->
+        <div class="right-section">
+            <div class="nav">
+                <button id="menu-btn">
+                    <span class="material-icons-sharp">menu</span>
+                </button>
+                <div class="dark-mode">
+                    <span class="material-icons-sharp active">light_mode</span>
+                    <span class="material-icons-sharp">dark_mode</span>
+                </div>
+                <div class="profile">
+                    <div class="info">
+                        <p>Hola, <b>Usuario</b></p>
+                        <small class="text-muted">Estudiante</small>
+                    </div>
+                    <div class="profile-photo">
+                        <img src="images/profile-1.jpg">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Nueva sección de Resumen del Día -->
+            <div class="options">
+                <h2>Resumen del Día</h2>
+                <p><strong>Total de Horas Planificadas:</strong> <span id="total-horas">0</span> hrs</p>
+                <p><strong>Horas Académicas:</strong> <span id="academic-hours">0</span> hrs 🔵</p>
+                <p><strong>Horas Extracurriculares:</strong> <span id="extracurricular-hours">0</span> hrs 🟡</p>
+                <p><strong>Horas Recomendadas:</strong> <span id="recommended-hours">0</span> hrs 🟢</p>
+                <canvas id="chart-summary"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/schedule.js"></script>
+    <script src="assets/js/index.js"></script>
+</body>
+
+</html>
