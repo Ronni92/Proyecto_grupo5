@@ -13,39 +13,45 @@ var caja_trasera_register = document.querySelector(".caja__trasera-register");
 
 // Registrar usuario (Asegurarse de que el DOM está cargado)
 document.addEventListener("DOMContentLoaded", () => {
-    document.querySelector(".formulario__register button").addEventListener("click", async (e) => {
-        e.preventDefault();
+    
+    // Agrega un evento de escucha al formulario de registro cuando se envía
+    document.querySelector(".formulario__register").addEventListener("submit", async (e) => {
+        e.preventDefault(); // Evita la recarga de la página al enviar el formulario
         
+        // Se obtienen los valores ingresados en los campos del formulario
         const userData = {
-            name: document.querySelector(".formulario__register input[placeholder='Nombre completo']").value,
-            email: document.querySelector(".formulario__register input[placeholder='Correo Electronico']").value,
+            nombre_completo: document.querySelector(".formulario__register input[placeholder='Nombre completo']").value,
+            correo_electronico: document.querySelector(".formulario__register input[placeholder='Correo Electronico']").value,
             usuario: document.querySelector(".formulario__register input[placeholder='Usuario']").value,
-            password: document.querySelector(".formulario__register input[placeholder='Contraseña']").value
+            contraseña: document.querySelector(".formulario__register input[placeholder='Contraseña']").value
         };
 
         try {
+            // Se envía una solicitud HTTP POST al servidor con los datos del usuario
             const response = await fetch("http://localhost:5000/registrar", {
-                method: "POST",
+                method: "POST", // Especifica que es una solicitud POST
                 headers: {
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json" // Indica que los datos enviados están en formato JSON
                 },
-                body: JSON.stringify(userData)
+                body: JSON.stringify(userData) // Convierte el objeto userData en una cadena JSON para enviarlo
             });
-        
-            const data = await response.json();  // Obtén la respuesta del backend
-        
+
+            // Convierte la respuesta del servidor en un objeto JSON
+            const data = await response.json();
+
             if (response.ok) {
-                alert(data.mensaje);  // Muestra el mensaje de éxito
-                window.location.href = "/dashboard.html";  // Redirige al usuario
+                alert(data.mensaje); // Muestra un mensaje de éxito al usuario
+                window.location.href = "/dashboard.html"; // Redirige al usuario a la página del dashboard
             } else {
-                alert(data.mensaje || "Error en el registro");  // Muestra el mensaje de error
+                alert(data.mensaje || "Error en el registro"); // Muestra un mensaje de error si la respuesta no es exitosa
             }
         } catch (error) {
-            console.error("Error:", error);
-            alert("Error de conexión con el servidor");
+            console.error("Error:", error); // Muestra el error en la consola para depuración
+            alert("Error de conexión con el servidor"); // Muestra un mensaje de error en caso de fallo de conexión
         }
     });
 });
+
 
 // FUNCIONES
 
