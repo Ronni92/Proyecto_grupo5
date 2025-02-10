@@ -19,26 +19,30 @@ document.addEventListener("DOMContentLoaded", () => {
         const userData = {
             name: document.querySelector(".formulario__register input[placeholder='Nombre completo']").value,
             email: document.querySelector(".formulario__register input[placeholder='Correo Electronico']").value,
+            usuario: document.querySelector(".formulario__register input[placeholder='Usuario']").value,
             password: document.querySelector(".formulario__register input[placeholder='Contraseña']").value
         };
 
         try {
-            // Ejemplo en el registro
-            const response = await fetch("/api/register", {  // <-- Usa /api
+            const response = await fetch("http://localhost:5000/registrar", {
                 method: "POST",
                 headers: {
-                "Content-Type": "application/json"
+                    "Content-Type": "application/json"
                 },
                 body: JSON.stringify(userData)
             });
-            
+        
+            const data = await response.json();  // Obtén la respuesta del backend
+        
             if (response.ok) {
-                window.location.href = "/dashboard.html";
+                alert(data.mensaje);  // Muestra el mensaje de éxito
+                window.location.href = "/dashboard.html";  // Redirige al usuario
             } else {
-                alert("Error en el registro");
+                alert(data.mensaje || "Error en el registro");  // Muestra el mensaje de error
             }
         } catch (error) {
             console.error("Error:", error);
+            alert("Error de conexión con el servidor");
         }
     });
 });
