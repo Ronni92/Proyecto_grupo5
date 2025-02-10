@@ -1,19 +1,13 @@
-import sys
-import os
 from flask import Flask
-from flask import send_from_directory
+from flask_cors import CORS
+from routes import routes_bp
 
-# Agregar el directorio actual al path de Python
-sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+app = Flask(__name__)
+CORS(app)  # Permite solicitudes desde el frontend
+app.secret_key = 'tu_clave_secreta'  # Necesario para manejar sesiones
 
-from routes import routes_bp  # Ahora Flask podrá encontrar el módulo
-
-app = Flask(__name__, template_folder='../frontend', static_folder='../frontend/assets')
+# Registrar el Blueprint
 app.register_blueprint(routes_bp)
-
-@app.route('/assets/<path:filename>')
-def custom_static(filename):
-    return send_from_directory('../frontend/assets',filename)
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
             nombre_completo: document.querySelector(".formulario__register input[placeholder='Nombre completo']").value,
             correo_electronico: document.querySelector(".formulario__register input[placeholder='Correo Electronico']").value,
             usuario: document.querySelector(".formulario__register input[placeholder='Usuario']").value,
-            contraseña: document.querySelector(".formulario__register input[placeholder='Contraseña']").value
+            password: document.querySelector(".formulario__register input[placeholder='Password']").value
         };
 
         try {
