@@ -11,47 +11,67 @@ var contenedor_login_register = document.querySelector(".contenedor__login-regis
 var caja_trasera_login = document.querySelector(".caja__trasera-login");
 var caja_trasera_register = document.querySelector(".caja__trasera-register");
 
-// Registrar usuario (Asegurarse de que el DOM está cargado)
+// 📌 **MODIFICACIÓN 1: Agregamos redirección automática al registrarse**
 document.addEventListener("DOMContentLoaded", () => {
-    
-    // Agrega un evento de escucha al formulario de registro cuando se envía
     document.querySelector(".formulario__register").addEventListener("submit", async (e) => {
         e.preventDefault(); // Evita la recarga de la página al enviar el formulario
         
-        // Se obtienen los valores ingresados en los campos del formulario
         const userData = {
-            nombre_completo: document.querySelector(".formulario__register input[placeholder='Nombre completo']").value,
-            correo_electronico: document.querySelector(".formulario__register input[placeholder='Correo Electronico']").value,
+            nombre: document.querySelector(".formulario__register input[placeholder='Nombre completo']").value,
+            correo: document.querySelector(".formulario__register input[placeholder='Correo Electronico']").value,
             usuario: document.querySelector(".formulario__register input[placeholder='Usuario']").value,
-            password: document.querySelector(".formulario__register input[placeholder='Password']").value
+            contraseña: document.querySelector(".formulario__register input[placeholder='Contraseña']").value
         };
 
         try {
-            // Se envía una solicitud HTTP POST al servidor con los datos del usuario
-            const response = await fetch("http://localhost:5000/registrar", {
-                method: "POST", // Especifica que es una solicitud POST
-                headers: {
-                    "Content-Type": "application/json" // Indica que los datos enviados están en formato JSON
-                },
-                body: JSON.stringify(userData) // Convierte el objeto userData en una cadena JSON para enviarlo
+            const response = await fetch("http://127.0.0.1:5000/register", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(userData)
             });
 
-            // Convierte la respuesta del servidor en un objeto JSON
             const data = await response.json();
 
-            if (response.ok) {
-                alert(data.mensaje); // Muestra un mensaje de éxito al usuario
-                window.location.href = "/dashboard.html"; // Redirige al usuario a la página del dashboard
+            if (response.ok && data.redirect) {
+                window.location.href = data.redirect; // 📌 🔹 Redirige automáticamente al usuario sin alertas
             } else {
-                alert(data.mensaje || "Error en el registro"); // Muestra un mensaje de error si la respuesta no es exitosa
+                console.error("Error en el registro:", data.error);
             }
         } catch (error) {
-            console.error("Error:", error); // Muestra el error en la consola para depuración
-            alert("Error de conexión con el servidor"); // Muestra un mensaje de error en caso de fallo de conexión
+            console.error("Error en la conexión:", error);
         }
     });
 });
 
+// 📌 **MODIFICACIÓN 2: Agregamos redirección automática al iniciar sesión**
+document.addEventListener("DOMContentLoaded", () => {
+    document.getElementById("loginForm").addEventListener("submit", async function(event) {
+        event.preventDefault();
+
+        const userData = {
+            usuario: document.getElementById("usuarioLogin").value,
+            contraseña: document.getElementById("contraseñaLogin").value
+        };
+
+        try {
+            const response = await fetch("http://127.0.0.1:5000/login", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(userData)
+            });
+
+            const data = await response.json();
+            
+            if (response.ok && data.redirect) {
+                window.location.href = data.redirect; // 📌 🔹 Redirige automáticamente al usuario sin alertas
+            } else {
+                console.error("Error en el inicio de sesión:", data.error);
+            }
+        } catch (error) {
+            console.error("Error en la conexión:", error);
+        }
+    });
+});
 
 // FUNCIONES
 
@@ -118,3 +138,10 @@ function toggleTheme() {
     }
 }
 
+document.addEventListener("DOMContentLoaded", () => {
+    document.getElementById("btn__iniciar-sesion").addEventListener("click", iniciarSesion);
+    document.getElementById("btn__registrarse").addEventListener("click", register);
+    document.getElementById("toggle-theme").addEventListener("click", toggleTheme);
+    
+    window.addEventListener("resize", anchoPage);
+});
