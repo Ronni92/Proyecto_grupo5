@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <title>SchedulAI - ChatBot</title>
+</head>
+
+<body class="loading">
+
+    <div class="container">
+        <!-- Sidebar Section -->
+        <aside>
+            <div class="toggle">
+                <div class="logo">
+                    <img src="assets/images/logo.png">
+                    <h2>Schedul<span class="danger">AI</span></h2>
+                </div>
+                <div class="close" id="close-btn">
+                    <span class="material-icons-sharp">
+                        close
+                    </span>
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <a href="index_inicio.html" data-link>
+                    <span class="material-icons-sharp">
+                        dashboard
+                    </span>
+                    <h3>Inicio</h3>
+                </a>
+                <a href="index_configuraciones.html" data-link>
+                    <span class="material-icons-sharp">
+                        settings
+                    </span>
+                    <h3>Configuración y Preferencias</h3>
+                </a>
+                <a href="index_gestion.html" data-link>
+                    <span class="material-icons-sharp">
+                        calendar_month
+                    </span>
+                    <h3>Gestión de Horarios</h3>
+                </a>
+                <a href="index_objetivo.html" data-link>
+                    <span class="material-icons-sharp">
+                        rocket
+                    </span>
+                    <h3>Objetivo</h3>
+                </a>
+                <a href="index_recoIA.html" data-link>
+                    <span class="material-icons-sharp">
+                        insights
+                    </span>
+                    <h3>Actividades</h3>
+                </a>
+                <a href="index_chat.html" data-link class="active">
+                    <span class="material-icons-sharp">
+                        forum
+                    </span>
+                    <h3>Chat Bot</h3>
+                </a>
+                <a href="#" data-link>
+                    <span class="material-icons-sharp">
+                        logout
+                    </span>
+                    <h3>Logout</h3>
+                </a>
+            </div>
+        </aside>
+        <!-- End of Sidebar Section -->
+
+        <!-- Main Content -->
+        <main>
+            <h1>Chat con SchedulAI</h1>
+            <div class="chat-container" id="chat-container">
+                <!-- Los mensajes aparecerán aquí -->
+            </div>
+            <div class="input-container">
+                <textarea id="user-input" placeholder="Escribe tu mensaje..."></textarea>
+                <button id="send-btn">Enviar</button>
+            </div>
+        </main>
+
+        <!-- Right Section -->
+        <div class="right-section">
+            <div class="nav">
+                <button id="menu-btn">
+                    <span class="material-icons-sharp">menu</span>
+                </button>
+                <div class="dark-mode">
+                    <span class="material-icons-sharp active">light_mode</span>
+                    <span class="material-icons-sharp">dark_mode</span>
+                </div>
+                <div class="profile">
+                    <div class="info">
+                        <p>Hola, <b id="username-display">Usuario</b></p>
+                        <small class="text-muted">Estudiante</small>
+                    </div>
+                    <div class="profile-photo">
+                        <img id="user-photo" src="assets/images/profile-1.jpg">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Estado del Chatbot -->
+            <div class="chat-status">
+                <h2>Estado del ChatBot</h2>
+                <div class="status-box">
+                    <span id="bot-status" class="status-indicator offline"></span>
+                    <p id="bot-status-text">Desconectado</p>
+                </div>
+            </div>
+
+            <!-- Consejos del ChatBot -->
+            <div class="tips">
+                <h2>Consejos Rápidos</h2>
+                <p id="quick-tip">"Planifica tus descansos para mejorar la productividad."</p>
+            </div>
+
+            <!-- Notificaciones -->
+            <div class="notifications">
+                <h2>Notificaciones</h2>
+                <div class="notification">
+                    <span class="material-icons-sharp">schedule</span>
+                    <p>Tienes una actividad en 30 minutos.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/chat.js"></script>
+    <script src="assets/js/index.js"></script>
+    <script src="app1.js"></script>
+
+</body>
+
+</html>
